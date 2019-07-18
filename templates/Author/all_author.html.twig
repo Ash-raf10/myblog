@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Authors!{% endblock %}
+
+
+
+{% block body %}
+<body class="body">
+<header>
+    <div class="container">
+        <div id="branding">
+            <span class="user"> <h5>
+                   {# {%  if user!=null %}
+                        Welocome {{ user.username }}
+                    {% else %}
+                        Not Logged in
+                    {% endif %}
+                    #}
+
+                </h5> </span>
+            <h1><a href="/"><span class="highlight"> SecureBangla Network</span></a></h1>
+        </div>
+        <nav>
+            <ul>
+
+                <li class="current"><a href="/">Home</a></li>
+                <li><a href="/">Articles</a></li>
+                <li><a href="/authors">Authors</a></li>
+                {% if is_granted('ROLE_Author') %}
+                    <li><a href="/logout">LogOut</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                {% endif %}
+                <li><a href="/new">Post</a></li>
+                <li><a href="/">About</a></li>
+
+
+            </ul>
+
+        </nav>
+    </div>
+</header>
+
+<section id="newsletter">
+    <div class="container">
+        <h1>Subscribe to get our newsletter</h1>
+        <form>
+            <input type="email" placeholder="Enter your valid Email...">
+            <button type="submit" class="button_1">Subscribe</button>
+        </form>
+    </div>
+</section>
+<section id="boxes">
+        <div class="container">
+            <div>
+            <h3> {% for authors in all_author %}
+                    <p>{{ render(controller(
+                        'App\\Controller\\AuthorController::author_post',{id: authors.id})
+                    )}}
+                    </p>
+                {% endfor %}</h3>
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}
+
+{#
+{% block body %}
+
+    <h1>List of all authors</h1></br>
+    <br>
+
+    {% for authors in all_author %}
+        <a href="/authors/{{ authors.id }}"><ul><li>{{ authors.name }} &nbsp;&nbsp;&nbsp; <a href="/authors/{{ authors.id }}/post"><ul><li>post by this author</li></ul></a> </li></ul></a>
+    {% endfor %}
+
+{% endblock %}
+#}

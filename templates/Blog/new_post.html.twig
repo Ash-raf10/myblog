@@ -1,0 +1,104 @@
+{#{% extends 'base.html.twig' %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block body %}
+
+    {{ form(form) }}
+
+
+{% endblock %}
+
+#}
+
+{% extends 'base.html.twig' %}
+{% block html %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Affordable the networking site">
+    <meta name="keywords" content="networking, bangla, queries, it, blogs">
+    <meta name="author" content="Ashraf Bin Sahadat">
+
+    <title>{% block title %}SNN Networks || Post {% endblock %}</title>
+
+
+
+</head>
+{% block body %}
+    <body class="body">
+    <header>
+        <div class="container">
+            <div id="branding">
+            <span class="user"> <h5>
+                    {%  if user!=null %}
+                        Welocome {{ user.username }}
+                    {% else %}
+                        Not Logged in
+                    {% endif %}
+
+                </h5> </span>
+                <h1><a href="/"><span class="highlight"> SecureBangla Network</span></a></h1>
+            </div>
+            <nav>
+                <ul>
+
+                    <li class="current"><a href="/">Home</a></li>
+                    <li><a href="/">Articles</a></li>
+                    <li><a href="/authors">Authors</a></li>
+                    {% if is_granted('ROLE_Author') %}
+                        <li><a href="/logout">LogOut</a></li>
+                    {% else %}
+                        <li><a href="/login">Login</a></li>
+                    {% endif %}
+                    <li><a href="/new">Post</a></li>
+                    <li><a href="/">About</a></li>
+
+
+
+
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+
+
+<section id="post_box">
+    <div class="container">
+
+            <form class="ui form" action="submit_post" method="post" enctype="multipart/form-data">
+
+            <br>
+            <br>
+            <br>
+            <input type="text" placeholder="Title" required name="title"><br>
+            <input type="text" placeholder="Author(give comma if multiple author)" required name="authors"><br>
+            <textarea name="article" placeholder="white article here..." rows="10" required name="article"></textarea><br>
+
+            <input type="file" name="imageFile" accept="image/*">
+
+
+            <button class="ui button" type="submit">Submit Article</button>
+
+
+
+        </form>
+    </div>
+
+</section>
+
+
+<footer>
+    <p>SNN Networks, Copyright &copy; 2019</p>
+    <p> <a href="">Facebook |</a><a href="">| Instagram</a></p>
+</footer>
+
+</body>
+{% endblock %}
+</html>
+
+{% endblock %}

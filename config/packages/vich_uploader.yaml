@@ -1,0 +1,14 @@
+vich_uploader:
+    db_driver: orm
+
+    #mappings:
+    #    products:
+    #        uri_prefix: /images/products
+    #        upload_destination: '%kernel.project_dir%/public/images/products'
+
+   #it is not currently used
+    mappings:
+         imageFile:
+            uri_prefix: /post/images
+            upload_destination: '%kernel.project_dir%/public/post/images'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer

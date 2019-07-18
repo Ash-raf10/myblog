@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>hello this is author <a href="/authors/{{ author.id }}">{{ author.name }}</a> </h1>
+
+
+     <ul>
+         {%  for post in post %}
+            <a href="/blog/{{ post.id }}">Article title is--> {{ post.title }}</a>
+            </br>
+      {% endfor %}
+    </ul>
+{% endblock %}

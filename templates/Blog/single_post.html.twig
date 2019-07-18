@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block single_post %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Affordable the networking site">
+    <meta name="keywords" content="networking, bangla, queries, it, blogs">
+    <meta name="author" content="Ashraf Bin Sahadat">
+
+    <title>{% block title %}SNN Networks || Single Post {% endblock %}</title>
+
+
+</head>
+
+{% block body %}
+<body>
+<header>
+    <div class="container">
+        <div id="branding">
+            <span class="user"> <h5>
+                    {%  if user!=null %}
+                        Welocome {{ user.username }}
+                    {% else %}
+                        Not Logged in
+                    {% endif %}
+
+                </h5> </span>
+            <h1><span class="highlight">SNN Network </span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li class="current"><a href="/">Home</a></li>
+                <li><a href="/authors">Authors</a></li>
+                <li><a href="/">Articles</a></li>
+                <li><a href="/register">Sign Up</a></li>
+                <li><a href="/">Ask</a></li>
+                <li><a href="/new">Post</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="main">
+    <div class="container">
+        <article id="main-col">
+
+            <br/>
+            <br/>
+            <h1 class="page-title"><b>{{ post.title }}</b></h1>
+            <h4 class="authors">{{ auth_name }}</h4>
+            {% if post.image==null %}
+                <p>image not found for this post</p>
+            {% else %}
+                <li><img src="{{ vich_uploader_asset(post, 'imageFile')}}" alt="new" style="width:400px;height:400px;"/></li>
+            {% endif %}
+            <p>   {{ post.article }}    </p>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+            <section id="post_box">
+                <div class="container">
+
+                    {% if is_granted('ROLE_Author') %}
+                    <form class="ui form" action="/blog/delete/{{ post.id }}" method="get" enctype="multipart/form-data">
+                        <button class="ui button" type="submit">Delete Article</button>
+
+                    {% endif %}
+
+
+
+
+
+                    </form>
+                </div>
+
+            </section>
+
+
+
+                    <h3 class="comments">Please leave your comments here</h3>
+            <form class="input">
+                Name:<br>
+                <input type="text" name="name"><br/>
+                Email:<br>
+                <input type="email" name="email"><br/>
+                comments:<br>
+                <textarea name="comments" placeholder="leave a comment here..." rows="6" required></textarea><br/>
+                <input type="submit" value="Submit"><br/>
+            </form>
+
+        </article>
+    </div>
+</section>
+
+
+<footer>
+    <p>SNN Networks, Copyright &copy; 2019</p>
+    <p> <a href="">Facebook |</a><a href="">| Instagram</a></p>
+</footer>
+
+{% endblock %}
+
+</body>
+</html>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}Post By Id!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Hello ! ✅</h1>
+
+        This friendly message is coming from:
+        <ul>
+            <li>id is -->{{ post.id }}</li>
+            <li>title is -->{{ post.title }} </li>
+            <li>Content is -->{{ post.article }}</li>
+            <li>Author name is -->{{ auth_name }}</li>
+
+            {% if post.image==null %}
+            <li>image not found for this post</li>
+            {% else %}
+                <li><img src="{{ vich_uploader_asset(post, 'imageFile')}}" alt="new" style="width:400px;height:400px;"/></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+
+#}
