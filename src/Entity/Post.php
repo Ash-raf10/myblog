@@ -4,13 +4,16 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  * @Vich\Uploadable
  */
-class Post
+class Post implements NormalizableInterface
 {
     /**
      * @ORM\Id()
@@ -22,11 +25,17 @@ class Post
     /**
      * @ORM\Column(type="string", length=255)
      */
+
+
+
     private $title;
 
     /**
      * @ORM\Column(type="text", length=255)
      */
+
+
+
     private $article;
 
 
@@ -34,6 +43,7 @@ class Post
      * @ORM\ManyToOne(targetEntity="App\Entity\Author", inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
      */
+
     private $author;
 
 
@@ -132,6 +142,14 @@ class Post
     public function getImage()
     {
         return $this->image;
+    }
+
+    public function normalize(NormalizerInterface $serializer, $format = null, array $context = []): array
+    {
+        return [
+            'title' => $this->getTitle(),
+            'article' => $this->getArticle(),
+        ];
     }
 
 

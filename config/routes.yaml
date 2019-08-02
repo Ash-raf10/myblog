@@ -73,3 +73,7 @@ a_author:
 author_post:
   path : /authors/{id}/post
   controller : App\Controller\AuthorController::author_post
+
+search:
+  path : /search
+  controller : App\Controller\SearchController::searchedPost
