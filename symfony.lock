@@ -47,7 +47,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.6",
-            "ref": "02bc9e7994b70f4fda004131a0c78b7b1bf09789"
+            "ref": "5e476e8edf3fa8e7f045ad034f89bb464424f5c1"
         },
         "files": [
             "./config/packages/doctrine.yaml",
@@ -85,10 +85,10 @@
         "version": "1.0.2"
     },
     "doctrine/migrations": {
-        "version": "v2.1.0"
+        "version": "2.1.1"
     },
     "doctrine/orm": {
-        "version": "v2.6.3"
+        "version": "v2.6.4"
     },
     "doctrine/persistence": {
         "version": "1.1.1"
@@ -182,7 +182,7 @@
         "version": "v4.3.1"
     },
     "symfony/doctrine-bridge": {
-        "version": "v4.3.1"
+        "version": "v4.3.4"
     },
     "symfony/dotenv": {
         "version": "v4.3.1"
@@ -437,7 +437,7 @@
         ]
     },
     "zendframework/zend-code": {
-        "version": "3.3.1"
+        "version": "3.3.2"
     },
     "zendframework/zend-eventmanager": {
         "version": "3.2.1"
