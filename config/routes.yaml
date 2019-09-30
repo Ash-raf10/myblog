@@ -54,6 +54,9 @@ submit_post:
 
 
 
+
+
+
 home_auth:
   path : /sign_up/home
   controller : App\Controller\AuthorController::home_auth
@@ -73,6 +76,15 @@ a_author:
 author_post:
   path : /authors/{id}/post
   controller : App\Controller\AuthorController::author_post
+
+
+about:
+  path : /about
+  controller: App\Controller\AboutController::about
+
+
+
+
 
 search:
   path : /search

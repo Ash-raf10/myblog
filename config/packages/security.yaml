@@ -35,3 +35,4 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
 
         - { path: ^/new, roles: ROLE_Author }
+        - { path: ^/sign_up, roles: ROLE_Author }

@@ -18,7 +18,8 @@ class loginController extends AbstractController
 
     public function log_in_form()
     {
-        return $this->render('LogIn\log_in_form.html.twig');
+        $user = $this->getUser();
+        return $this->render('LogIn\log_in_form.html.twig',['user'=>$user]);
     }
 
     public function log_submit(){

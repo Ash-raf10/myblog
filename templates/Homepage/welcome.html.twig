@@ -18,47 +18,7 @@
 </head>
 
 {% block body %}
-<body class="body">
-<header>
-    <div class="container">
-        <div id="branding">
-            <span class="user"> <h5>
-                    {%  if user!=null %}
-                        Welocome {{ user.username }}
-                    {% else %}
-                        Not Logged in
-                    {% endif %}
 
-                </h5> </span>
-            <h1><a href="/"><span class="highlight"> SecureBangla Network</span></a></h1>
-        </div>
-        <nav>
-            <ul>
-
-                <li class="current"><a href="/">Home</a></li>
-                <li><a href="/">Articles</a></li>
-                <li><a href="/authors">Authors</a></li>
-                {% if is_granted('ROLE_Author') %}
-                    <li><a href="/logout">LogOut</a></li>
-                {% else %}
-                    <li><a href="/login">Login</a></li>
-                {% endif %}
-                <li><a href="/new">Post</a></li>
-                <li><a href="/">About</a></li>
-
-
-
-
-            </ul>
-
-            <form class="example" action="/search" style="margin:auto;max-width:300px" autocomplete="off">
-                <input type="text" placeholder="Search.." name="query" >
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-
-        </nav>
-    </div>
-</header>
 <section id="showcase">
     <div class="container">
 
@@ -91,9 +51,6 @@
 
     </div>
 </section>
-<footer>
-    <p>SNN Networks, Copyright &copy; 2019</p>
-</footer>
 
 {% endblock %}
 

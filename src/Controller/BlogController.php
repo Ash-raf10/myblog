@@ -16,6 +16,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends AbstractController
 {
+
+    public function get_the_user(){
+        $user = $this->getUser();
+    }
     //method to show all the blog post
     public function show_all()
     {
@@ -24,7 +28,9 @@ class BlogController extends AbstractController
 
         $all_post = $repository->findAll();
 
-        return $this->render("Blog\all_post.html.twig", ['all' => $all_post]);
+        $user = $this->get_the_user();
+
+        return $this->render("Blog\all_post.html.twig", ['all' => $all_post,'user' => $user]);
     }
 
     //showing individual article using id

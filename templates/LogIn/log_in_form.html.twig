@@ -1,47 +1,10 @@
 {% extends 'base.html.twig' %}
-{% block html %}
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Affordable the networking site">
-    <meta name="keywords" content="networking, bangla, queries, it, blogs">
-    <meta name="author" content="Ashraf Bin Sahadat">
-
-    <title>{% block title %}SBN | Login{% endblock %}</title>
 
 
-</head>
-<body>
+    {% block title %}SBN | Login{% endblock %}
+
+
 {% block body %}
-<header>
-    <div class="container">
-        <div id="branding">
-            <h1><span class="highlight">SecureBangla Network</span> </h1>
-        </div>
-        <nav>
-            <ul>
-                <li class="current"><a href="/">Home</a></li>
-                <li><a href="/">Articles</a></li>
-                <li><a href="/authors">Authors</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/new">Post</a></li>
-                <li><a href="/">About</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-    <section id="newsletter">
-        <div class="container">
-            <h1>Subscribe to get our newsletter</h1>
-            <form>
-                <input type="email" placeholder="Enter your valid Email...">
-                <button type="submit" class="button_1">Subscribe</button>
-            </form>
-        </div>
-    </section>
 <div class="container">
     <h1><a href="/login">Login</a></h1>
 
@@ -65,14 +28,7 @@
 </div>
 
 
-    <footer>
-        <p>SecureBanglaNetworks, Copyright &copy; 2019</p>
-        <p> <a href="">Facebook |</a><a href="">| Instagram</a></p>
-    </footer>
 
 {% endblock %}
-</body>
-</html>
 
-{% endblock %}
 

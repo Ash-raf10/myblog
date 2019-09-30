@@ -23,7 +23,8 @@ class HomeController extends AbstractController
         $all_post = $repository->findAll();
 
      //   $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $user = $this->getUser();
+        //
+        $user= $this->getUser();
 
 
         return $this->render('Homepage/welcome.html.twig', ['all' => $all_post,'user'=>$user]);

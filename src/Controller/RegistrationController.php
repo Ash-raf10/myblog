@@ -15,7 +15,8 @@ class RegistrationController extends AbstractController
 
     public function Reg_form()
     {
-        return $this->render('Registration\reg_home.html.twig');
+        $user = $this->getUser();
+        return $this->render('Registration\reg_home.html.twig',['user'=>$user]);
     }
 
     public function reg_submit(Request $request, UserPasswordEncoderInterface $passwordEncoder)

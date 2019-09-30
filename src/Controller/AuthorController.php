@@ -26,9 +26,9 @@ class AuthorController extends AbstractController
         $new = new Author();
         //symfony form builder
         $form = $this->createFormBuilder($new)
-            ->add('name', TextType::class)
-            ->add('phone', IntegerType::class)
-            ->add('save', SubmitType::class, ['label' => 'Create Id'])
+            ->add('Name', TextType::class)
+            ->add('Phone', IntegerType::class)
+            ->add('Save', SubmitType::class, ['label' => 'Go'])
             ->getForm();
 
         $form->handleRequest($request);
@@ -37,7 +37,11 @@ class AuthorController extends AbstractController
         //after submitting the form ,,validating and updating form input in  database
         if ($form->isSubmitted() && $form->isValid()) {
 
+
             $new = $form->getData();
+
+
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($new);

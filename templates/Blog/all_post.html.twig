@@ -2,27 +2,25 @@
 
 {% block title %}All post{% endblock %}
 
-{% block body %}
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
-
-    <div class="example-wrapper">
-        <h1>Hello ! ✅</h1>
 
 
-        <ul>
-            {% for post in all %}
-                <li>id is --> {{ post.id }}</li>
-                <li>title is --> {{ post.title }} </li>
-                <li>desc is --> {{ post.article }} </li>
-                </br>
+     {% block body %}
+
+            <section id="boxes">
+                <div class="flex-container">
+                    {% for post in all %}
+                    <div class="box">
+
+                                <img src="{{ vich_uploader_asset(post, 'imageFile')}}" alt="NO Image" style="width:100px;height:100px;"/>
+                                <h3><a href="/blog/{{ post.id}}">{{ post.title }}</a></h3>
+                                <p>{{ post.article }}</p>
+
+                            </div>
+                        {% endfor %}
 
 
-            {% endfor %}
-        </ul>
 
-        <a href="/">Home</a>
-    </div>
-{% endblock %}
+            </div>
+            </section>
+
+                {% endblock %}
