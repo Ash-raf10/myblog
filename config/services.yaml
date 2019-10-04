@@ -7,7 +7,6 @@ parameters:
     #uploading directory for images
     upload_directory: '%kernel.project_dir%/public/post/images'
 
-
 services:
     # default configuration for services in *this* file
     _defaults:

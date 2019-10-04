@@ -17,9 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 class BlogController extends AbstractController
 {
 
-    public function get_the_user(){
-        $user = $this->getUser();
-    }
+
     //method to show all the blog post
     public function show_all()
     {
@@ -28,24 +26,24 @@ class BlogController extends AbstractController
 
         $all_post = $repository->findAll();
 
-        $user = $this->get_the_user();
+        $user = $this->getUser();
 
         return $this->render("Blog\all_post.html.twig", ['all' => $all_post,'user' => $user]);
     }
 
     //showing individual article using id
-    public function show($id)
+    public function show($title)
     {
         //finding the individual article using docttine find by id
         $post = $this->getDoctrine()
             ->getRepository(Post::class)
-            ->find($id);
+            ->findOneBy(['title'=>$title]);
 
         $user = $this->getUser();
 
         //If no post is found containing that id
         if (!$post) {
-            return new Response('no post found for ' . $id . " ");
+            return new Response('no post found for ' . $title . " ");
 
         }
 
@@ -138,42 +136,6 @@ class BlogController extends AbstractController
 
             return $this->render('Blog\submit.html.twig', ['post' => $post]);
 
-
-            /*
-               $n = new Post();
-
-
-               $form = $this->createFormBuilder($n)
-                   ->add('title', TextType::class)
-                   ->add('article', TextareaType::class)
-                   ->add('author', EntityType::class, ['class' => 'App:Author', 'choice_label' => 'id'])
-                   ->add('imageFile', VichFileType::class, [
-                       'required' => false,
-                       'allow_delete' => true,
-                       'download_label' => '...',
-                       'download_uri' => true,
-                   ])
-                   ->add('save', SubmitType::class, ['label' => 'Create Post'])
-                   ->getForm();
-
-               $form->handleRequest($request);
-
-               if ($form->isSubmitted() && $form->isValid()) {
-
-                   $new = $form->getData();
-                   $entityManager = $this->getDoctrine()->getManager();
-
-                   $entityManager->persist($new);
-                   $entityManager->flush();
-
-                   return $this->redirectToRoute('show_all');
-               }
-
-               return $this->render('Blog\new_post.html.twig', [
-                   'form' => $form->createView(),
-               ]);
-
-            */
         }
 
     }

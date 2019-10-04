@@ -26,10 +26,10 @@ logout:
 
 
 show_post:
-  path: /blog/{id}
+  path: /blog/{title}
   controller: App\Controller\BlogController::show
-  requirements:
-    num: '\d+'
+  #requirements:
+   # num: '\d+'
 
 edit_post:
     path: /blog/delete/{id}
@@ -70,7 +70,7 @@ all_author:
   controller : App\Controller\AuthorController::all_authors
 
 a_author:
-  path : /authors/{id}
+  path : /authors/{name}
   controller : App\Controller\AuthorController::author
 
 author_post:

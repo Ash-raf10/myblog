@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 
 class AuthorController extends AbstractController
@@ -24,6 +24,11 @@ class AuthorController extends AbstractController
     public function sign_up(Request $request)
     {
         $new = new Author();
+
+        $repository = $this->getDoctrine()->getRepository(Author::class);
+        $all_author = $repository->findAll();
+
+
         //symfony form builder
         $form = $this->createFormBuilder($new)
             ->add('Name', TextType::class)
@@ -34,11 +39,20 @@ class AuthorController extends AbstractController
         $form->handleRequest($request);
 
 
+
         //after submitting the form ,,validating and updating form input in  database
         if ($form->isSubmitted() && $form->isValid()) {
 
 
             $new = $form->getData();
+
+            $name = $new->getName();
+
+            foreach ($all_author as $a){
+                if ($a->getName()==$name){
+                    return $this->redirectToRoute('post_new');
+                }
+            }
 
 
 
@@ -64,16 +78,21 @@ class AuthorController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Author::class);
         $all_author = $repository->findAll();
 
-        return $this->render("Author\all_author.html.twig", ['all_author' => $all_author]);
+        $user = $this->getUser();
+
+        return $this->render("Author\all_author.html.twig", ['user'=>$user,'author' => $all_author]);
     }
 
 
     //finding individual author
 
-    public function author($id)
+    public function author($name)
     {
 
-        $author = $this->getDoctrine()->getRepository(Author::class)->find($id);
+        $author = $this->getDoctrine()->getRepository(Author::class)->findOneBy(['name'=>$name]);
+
+        $user = $this->getUser();
+
 
         //if author is not found
         if (!$author) {
@@ -81,7 +100,7 @@ class AuthorController extends AbstractController
         }
 
         //else
-        return $this->render("Author\single_author.html.twig", ['author' => $author]);
+        return $this->render("Author\single_author.html.twig", ['author' => $author,'user'=>$user]);
 
     }
 
@@ -93,13 +112,31 @@ class AuthorController extends AbstractController
 
 
         $post = $author->getPosts();
+        $user = $this->getUser();
 
         //if no post is found of that author
         if ($post->isEmpty()) {
             return $this->render("Error\NotFound.html.twig");
         }
 
-        return $this->render("Author\author_post.html.twig", ['post' => $post, 'author' => $author]);
+        return $this->render("Author\author_post.html.twig", ['post' => $post, 'author' => $author,'user'=>$user]);
+    }
+
+    public function writers_post($id){
+        $author = $this->getDoctrine()->getRepository(Author::class)->find($id);
+
+
+        $post = $author->getPosts();
+
+        $user = $this->getUser();
+
+
+        //if no post is found of that author
+        if ($post->isEmpty()) {
+            return $this->render("Error\NotFound.html.twig");
+        }
+
+        return $this->render("Author\writers_post.html.twig", ['post' => $post, 'author' => $author,'user'=>$user]);
     }
 
 }

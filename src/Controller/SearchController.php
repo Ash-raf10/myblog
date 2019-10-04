@@ -20,26 +20,17 @@ class SearchController extends AbstractController
 
     public function searchedPost(Request $request)
     {
-        //$repository = $this->getDoctrine()->getRepository(Post::class);
-
-        //$all_post = $repository->findAll();
-
 
         $q = $request->get('query');
-
-
-
-
 
         $em = $this->getDoctrine()->getManagerForClass(Post::class);
         $posts = $this->indexManager->search($q,Post::class, $em);
 
-
-
-         return $this->render('Search/post.html.twig',['posts'=>$posts]);
+        $user = $this->getUser();
 
 
 
+         return $this->render('Search/post.html.twig',['posts'=>$posts,'user'=>$user]);
 
 
 

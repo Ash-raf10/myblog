@@ -7,3 +7,6 @@ algolia_search:
           class: App\Entity\Post
           enable_serializer_groups: true
 
+
+
+

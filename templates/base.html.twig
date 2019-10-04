@@ -19,14 +19,14 @@
         <div class="container">
             {% block user %}
             <div id="branding">
-            <span class="user"> <h5>
+            <span class="user"> <h3>
                     {%  if user!=null %}
-                        Welocome {{ user.username }}
+                        Welcome {{ user.username }}
                     {% else %}
                         Not Logged in
                     {% endif %}
 
-                </h5> </span>
+                </h3> </span>
                 <h1><a href="/"><span class="highlight"> SecureBangla Network</span></a></h1>
             </div>
             {% endblock %}

@@ -17,8 +17,7 @@
             <p>NO result found</p>
             {% else %}
             {% for post in posts %}
-                <li>id is --> {{ post.id }}</li>
-                <li>title is --> {{ post.title }} </li>
+                <li><a href="/blog/{{ post.title }}"> title is --> {{ post.title }}</a> </li>
                 <li>desc is --> {{ post.article }} </li>
                 </br>
             {% endfor %}
