@@ -9,7 +9,7 @@
     </style>
 
     <div class="example-wrapper">
-        <h1>Hello ! ✅</h1>
+        <h1>Matched Result ✅</h1>
 
 
         <ul>
@@ -18,7 +18,6 @@
             {% else %}
             {% for post in posts %}
                 <li><a href="/blog/{{ post.title }}"> title is --> {{ post.title }}</a> </li>
-                <li>desc is --> {{ post.article }} </li>
                 </br>
             {% endfor %}
             {% endif %}

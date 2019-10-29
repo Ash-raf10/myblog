@@ -1,3 +1,22 @@
-<p>Your Post is Published</p>
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/CSS/error.css') }}">
 
-<button class="ui button" type="submit"><a href="/blog/{{ post.title }}">your post</a></button>
+{% endblock %}
+
+
+
+
+{% block body %}
+
+
+    <div class="error-container">
+
+        <h1>Your Post is Published</h1>
+
+        <button class="ui button" type="submit"><a href="/blog/{{ post.title }}">your post</a></button>
+        <img src="{{ asset('/assets/images/happy.jpg') }}" width="20%" alt="Error">
+
+    </div>
+
+
+{% endblock %}

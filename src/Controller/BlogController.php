@@ -126,7 +126,7 @@ class BlogController extends AbstractController
                 ->find($auth_id);
 
 
-            if (sizeof($all_post)>=100){
+            if (sizeof($all_post)>=15){
 
                 return $this->redirectToRoute('post_error');
 

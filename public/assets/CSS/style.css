@@ -410,6 +410,17 @@ footer{
         width: 100%;
         
     }
+
+    .error-container{
+        float: left;
+        text-align: center;
+        width: 90%;
+        padding: 10px;
+    }
+    .error-container h1{
+        font: 48px/1.5 Ariel, Helvetica, sans-serif;
+        color: red;
+    }
     
     header{
         padding-bottom: 20px;

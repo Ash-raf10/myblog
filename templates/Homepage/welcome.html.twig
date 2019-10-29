@@ -41,7 +41,8 @@
 
 <section id="boxes">
     <div class="flex-container">
-        {% for post in all %}
+        {% for post in all|slice(0,6) %}
+
         <div class="box">
 
 
