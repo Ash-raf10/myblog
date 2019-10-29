@@ -8,7 +8,7 @@
 
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('/assets/CSS/style.css') }}">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         {% endblock %}
 
     </head>
@@ -21,7 +21,7 @@
             <div id="branding">
             <span class="user"> <h3>
                     {%  if user!=null %}
-                        Welcome {{ user.username }}
+                        Welcome  {{ user.username }}
                     {% else %}
                         Not Logged in
                     {% endif %}
@@ -69,10 +69,12 @@
 
     {% block footer %}
 
-    <footer>
+    <footer  >
         <p>SNN Networks, Copyright &copy; 2019</p>
     </footer>
     {% endblock %}
 
         {% block javascripts %}{% endblock %}
 </html>
+
+

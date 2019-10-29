@@ -1,3 +1,64 @@
-<h1>Please Enter Authors Name And Contact No</h1>
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-{{ form(form) }}
+{% block body %}
+
+<title>{% block title %}Author Info!{% endblock %}</title>
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/CSS/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block auth %}
+<body class="body">
+<header>
+
+    <div class="container">
+        <div id="branding">
+            <h1><a href="/"><span class="highlight"> SecureBangla</span> Network </a></h1>
+        </div>
+
+
+        <nav>
+            <ul>
+
+                <li><a href="/">Home</a></li>
+                <li ><a href="/blog">Articles</a></li>
+                <li><a href="/authors">Authors</a></li>
+                {% if is_granted('ROLE_Author') %}
+                    <li><a href="/logout">LogOut</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                {% endif %}
+                <li><a href="/sign_up">Post</a></li>
+                <li><a href="/about">About</a></li>
+
+            </ul>
+
+
+        </nav>
+
+    </div>
+
+</header>
+
+<div class="login-container">
+
+
+    <h1>Author Information</h1>
+
+
+    {{ form(form) }}
+
+</div>
+
+
+<footer>
+    <p>SecureBanglaNetworks, Copyright &copy; 2019</p>
+</footer>
+</body>
+{% endblock %}
+
+{% endblock %}
+
+

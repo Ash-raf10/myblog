@@ -1,0 +1,10 @@
+
+{% block new %}
+ <ul>
+        {%  for post in post %}
+            <a href="/blog/{{ post.title }}">Article title is--> {{ post.title }}</a>
+            </br>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

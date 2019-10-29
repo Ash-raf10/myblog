@@ -89,3 +89,24 @@ about:
 search:
   path : /search
   controller : App\Controller\SearchController::searchedPost
+
+
+
+
+
+auth_error:
+  path:          /sorry
+  controller:    Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+    # the path of the template to render
+    template:  'Error\auth_error.html.twig'
+
+
+post_error:
+  path:          /soorry
+  controller:    Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  defaults:
+    # the path of the template to render
+    template:  'Error\post_error.html.twig'
+
+

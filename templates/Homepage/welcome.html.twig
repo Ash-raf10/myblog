@@ -40,13 +40,15 @@
 
 
 <section id="boxes">
-    <div class="container">
+    <div class="flex-container">
         {% for post in all %}
-            <div class="box">
+        <div class="box">
+
+
                 <img src="{{ vich_uploader_asset(post, 'imageFile')}}" alt="NO Image" style="width:100px;height:100px;"/>
                 <h3><a href="/blog/{{ post.title}}">{{ post.title }}</a></h3>
 
-            </div>
+        </div>
         {% endfor %}
 
     </div>

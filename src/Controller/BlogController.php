@@ -34,7 +34,8 @@ class BlogController extends AbstractController
     //showing individual article using id
     public function show($title)
     {
-        //finding the individual article using docttine find by id
+        //finding the individual article using docttine find one by
+
         $post = $this->getDoctrine()
             ->getRepository(Post::class)
             ->findOneBy(['title'=>$title]);
@@ -84,6 +85,10 @@ class BlogController extends AbstractController
         //getting the author repo for mapping author to article
         $author_repo = $this->getDoctrine()->getRepository(Author::class);
 
+        $repository = $this->getDoctrine()->getRepository(Post::class);
+
+        $all_post = $repository->findAll();
+
         //creating a post entity
         $post = new Post();
         //getting the values from the form submission
@@ -119,6 +124,13 @@ class BlogController extends AbstractController
             $auth = $this->getDoctrine()
                 ->getRepository(Author::class)
                 ->find($auth_id);
+
+
+            if (sizeof($all_post)>=100){
+
+                return $this->redirectToRoute('post_error');
+
+            }
 
 
             $entityManager = $this->getDoctrine()->getManager();

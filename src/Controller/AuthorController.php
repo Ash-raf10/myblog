@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Author;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -31,8 +32,8 @@ class AuthorController extends AbstractController
 
         //symfony form builder
         $form = $this->createFormBuilder($new)
-            ->add('Name', TextType::class)
-            ->add('Phone', IntegerType::class)
+            ->add('Name', TextType::class,['label'=> 'Name: '])
+            ->add('Phone',NumberType::class,['label' => 'Contact: '])
             ->add('Save', SubmitType::class, ['label' => 'Go'])
             ->getForm();
 
@@ -47,6 +48,10 @@ class AuthorController extends AbstractController
             $new = $form->getData();
 
             $name = $new->getName();
+
+            if (sizeof($all_author)>=10){
+                return $this->redirectToRoute("auth_error");
+            }
 
             foreach ($all_author as $a){
                 if ($a->getName()==$name){
