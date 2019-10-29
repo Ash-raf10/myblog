@@ -1,0 +1,19 @@
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/CSS/error.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="error-container">
+
+        <h1>500!!!</h1>
+        <h2>OOPS! Server Busy. Go back to  <a href="/" ><b>homepage</b></a></h2>
+
+        <img src="{{ asset('/assets/images/sad.jpg') }}" width="20%" alt="Error">
+
+    </div>
+
+
+{% endblock %}
